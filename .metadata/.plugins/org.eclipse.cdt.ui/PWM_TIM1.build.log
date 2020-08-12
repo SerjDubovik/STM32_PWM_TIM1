@@ -1,23 +1,6 @@
-10:33:38 **** Incremental Build of configuration Debug for project PWM_TIM1 ****
+11:02:12 **** Incremental Build of configuration Debug for project PWM_TIM1 ****
 make -j4 all 
-Building file: ../src/main.c
-Invoking: MCU GCC Compiler
-D:\GIT\GitHub\STM32_PWM_TIM1\PWM_TIM1\Debug
-arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -I"D:/GIT/GitHub/STM32_PWM_TIM1/PWM_TIM1/StdPeriph_Driver/inc" -I"D:/GIT/GitHub/STM32_PWM_TIM1/PWM_TIM1/inc" -I"D:/GIT/GitHub/STM32_PWM_TIM1/PWM_TIM1/CMSIS/device" -I"D:/GIT/GitHub/STM32_PWM_TIM1/PWM_TIM1/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: PWM_TIM1.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"D:/GIT/GitHub/STM32_PWM_TIM1/PWM_TIM1/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "PWM_TIM1.elf" @"objects.list"   -lm
-Finished building target: PWM_TIM1.elf
- 
-make --no-print-directory post-build
-Generating binary and Printing size information:
-arm-none-eabi-objcopy -O binary "PWM_TIM1.elf" "PWM_TIM1.bin"
-arm-none-eabi-size "PWM_TIM1.elf"
-   text	   data	    bss	    dec	    hex	filename
-   1216	   1080	   1092	   3388	    d3c	PWM_TIM1.elf
- 
+make: Nothing to be done for 'all'.
 
-10:33:40 Build Finished (took 1s.590ms)
+11:02:13 Build Finished (took 330ms)
 

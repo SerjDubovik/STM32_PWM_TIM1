@@ -3,6 +3,14 @@
 
 
 
+
+#define TIM1_CH1N_PB        13
+#define TIM1_CH1_PA         8
+#define TIM1_CH2_PA         9
+
+#define LED1_G_PC           9
+#define LED2_B_PC           8
+
 #define PWM_VALUE           20
 #define TMR_T               200
 #define DEADTIME            20
@@ -12,32 +20,11 @@
 
 int main(void)
 {
-	    RCC->APB2ENR|= RCC_APB2ENR_IOPAEN;
-	    RCC->APB2ENR|= RCC_APB2ENR_IOPBEN;
-		RCC->APB2ENR|= RCC_APB2ENR_IOPCEN;
+	    RCC->APB2ENR|=RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN | RCC_APB2ENR_IOPCEN | RCC_APB2ENR_TIM1EN;
 
-	    RCC->APB2ENR|= RCC_APB2ENR_TIM1EN;
-
-
-		// онфигурирование GPIOC.13	красный светик на плате
-		GPIOC->CRH &= ~GPIO_CRH_MODE13;   			// очистить разр€ды MODE
-		GPIOC->CRH &= ~GPIO_CRH_CNF13;    			// очистить разр€ды CNF
-		GPIOC->CRH |=  GPIO_CRH_MODE13;   			// выход, 50MHz
-		GPIOC->CRH &= ~GPIO_CRH_CNF13;    			// общего назначени€, симметричный
-
-
-		GPIOB->CRH &= ~GPIO_CRH_MODE8;   			// очистить разр€ды MODE
-		GPIOB->CRH &= ~GPIO_CRH_CNF8;    			// очистить разр€ды CNF
-		GPIOB->CRH |=  GPIO_CRH_MODE8;   			// выход, 50MHz
-		GPIOB->CRH |=  GPIO_CRH_MODE8 | GPIO_CRH_CNF8_1;  // двухтактный выход с альтернати ф-ей, 50MHz
-
-
-		GPIOB->CRH &= ~GPIO_CRH_MODE9;   			// очистить разр€ды MODE
-		GPIOB->CRH &= ~GPIO_CRH_CNF9;    			// очистить разр€ды CNF
-		GPIOB->CRH |=  GPIO_CRH_MODE9;   			// выход, 50MHz
-		GPIOB->CRH |=  GPIO_CRH_MODE9 | GPIO_CRH_CNF9_1;  // двухтактный выход с альтернати ф-ей, 50MHz
-
-
+	    GPIOA->CRH=SET_CRH(TIM1_CH1_PA,M_OUT_50M,OUT_AF_PP) | SET_CRH(TIM1_CH2_PA,M_OUT_50M,OUT_AF_PP);
+	    GPIOB->CRH=SET_CRH(TIM1_CH1N_PB,M_OUT_50M,OUT_AF_PP);
+	    GPIOC->CRH=SET_CRH(LED1_G_PC,M_OUT_50M,OUT_GP_PP) | SET_CRH(LED2_B_PC,M_OUT_50M,OUT_GP_PP);
 
 	#ifdef PP_MODE
 	    //CH1: PWM mode 2, CH2: PWM mode 1, preload enabled on all channels
