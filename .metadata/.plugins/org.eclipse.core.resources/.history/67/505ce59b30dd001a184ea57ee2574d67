@@ -1,6 +1,7 @@
 
 #include "stm32f10x.h"
 
+// http://we.easyelectronics.ru/_YS_/complementary-pwm-i-push-pull-rezhimy-na-taymere-1-kontrollerov-stm32.html
 
 //#define PWM_VALUE           40
 #define TMR_T               360		// 100 kHz

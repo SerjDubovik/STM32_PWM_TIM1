@@ -2,17 +2,13 @@
 #include "stm32f10x.h"
 
 
-//#define PWM_VALUE           40
-#define TMR_T               360		// 100 kHz
-//#define DEADTIME            20
+
+#define PWM_VALUE           20
+#define TMR_T               200
+#define DEADTIME            20
 
 #define PP_MODE
 //#define COMPL_MODE
-
-
-unsigned int PWM_VALUE = 40;
-unsigned int DEADTIME = 20;
-
 
 int main(void)
 {
@@ -30,16 +26,16 @@ int main(void)
 		GPIOC->CRH &= ~GPIO_CRH_CNF13;    			// общего назначения, симметричный
 
 
-		GPIOA->CRH &= ~GPIO_CRH_MODE8;   			// очистить разряды MODE
-		GPIOA->CRH &= ~GPIO_CRH_CNF8;    			// очистить разряды CNF
-		GPIOA->CRH |=  GPIO_CRH_MODE8;   			// выход, 50MHz
-		GPIOA->CRH |=  GPIO_CRH_MODE8 | GPIO_CRH_CNF8_1;  // двухтактный выход с альтернати ф-ей, 50MHz
+		GPIOB->CRH &= ~GPIO_CRH_MODE8;   			// очистить разряды MODE
+		GPIOB->CRH &= ~GPIO_CRH_CNF8;    			// очистить разряды CNF
+		GPIOB->CRH |=  GPIO_CRH_MODE8;   			// выход, 50MHz
+		GPIOB->CRH |=  GPIO_CRH_MODE8 | GPIO_CRH_CNF8_1;  // двухтактный выход с альтернати ф-ей, 50MHz
 
 
-		GPIOA->CRH &= ~GPIO_CRH_MODE9;   			// очистить разряды MODE
-		GPIOA->CRH &= ~GPIO_CRH_CNF9;    			// очистить разряды CNF
-		GPIOA->CRH |=  GPIO_CRH_MODE9;   			// выход, 50MHz
-		GPIOA->CRH |=  GPIO_CRH_MODE9 | GPIO_CRH_CNF9_1;  // двухтактный выход с альтернати ф-ей, 50MHz
+		GPIOB->CRH &= ~GPIO_CRH_MODE9;   			// очистить разряды MODE
+		GPIOB->CRH &= ~GPIO_CRH_CNF9;    			// очистить разряды CNF
+		GPIOB->CRH |=  GPIO_CRH_MODE9;   			// выход, 50MHz
+		GPIOB->CRH |=  GPIO_CRH_MODE9 | GPIO_CRH_CNF9_1;  // двухтактный выход с альтернати ф-ей, 50MHz
 
 
 
@@ -72,7 +68,6 @@ int main(void)
 
 	for(;;)
 	{
-	    TIM1->CCR1=TMR_T - PWM_VALUE;
-	    TIM1->CCR2=PWM_VALUE;
+
 	}// скобка бесконечного цикла
 }// скобка мейна
